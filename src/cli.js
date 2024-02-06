@@ -27,7 +27,9 @@ const requestAnswer = () => readlineSync.question('Your answer: ');
 const reportSuccess = () => console.log('Correct!');
 
 const reportError = (answer = '', correctAnswer = '') => {
-  console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+  console.log(
+    `'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`,
+  );
 };
 
 const suggestRetry = (name) => {

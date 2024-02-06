@@ -10,26 +10,24 @@ import {
   suggestRetry,
 } from './cli.js';
 
-export default () => {
+export default (task = '', getQuestion = () => {}) => {
   greet();
 
   const name = requestName();
 
-  showTask('Answer "yes" if the number is even, otherwise answer "no".');
+  showTask(task);
 
   let correctAnswersCount = 0;
 
   while (correctAnswersCount < 3) {
-    const number = parseInt(Math.random() * 200 - 100, 10);
-    const isNumberEven = number % 2 === 0;
-    const correctAnswer = isNumberEven ? 'yes' : 'no';
+    const question = getQuestion();
 
-    showQuestion(number);
+    showQuestion(question.title);
 
     const answer = requestAnswer();
 
-    if (answer !== correctAnswer) {
-      reportError(answer, correctAnswer);
+    if (answer !== question.answer) {
+      reportError(answer, question.answer);
       suggestRetry(name);
       break;
     }

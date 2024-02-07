@@ -1,5 +1,5 @@
-const getRandomIntegerValue = () => {
-  const value = parseInt(Math.random() * 200 - 100, 10);
+const getRandomIntegerValue = (min = -100, max = 100) => {
+  const value = Math.round(Math.random() * (max - min) + min, 10);
 
   if (value === 0) return Math.abs(0);
 
